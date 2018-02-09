@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteArqueo" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1e5bb0e2-6d4c-4de7-8e1e-2fa34e401637">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     cuentacorriente.`id` AS cuentacorriente_id,
+     cuentacorriente.`dniCliente` AS cuentacorriente_dniCliente,
+     cuentacorriente.`haber` AS cuentacorriente_haber,
+     cuentacorriente.`debe` AS cuentacorriente_debe
+FROM
+     `cuentacorriente` cuentacorriente]]>
+	</queryString>
+	<field name="cuentacorriente_id" class="java.lang.Integer"/>
+	<field name="cuentacorriente_dniCliente" class="java.lang.Integer"/>
+	<field name="cuentacorriente_haber" class="java.lang.Double"/>
+	<field name="cuentacorriente_debe" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="133" y="16" width="314" height="63" uuid="57b2312c-2910-4bbd-8745-a35a16404d45"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Reporte Arqueo caja]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="455" y="34" width="100" height="20" uuid="87c79ef3-f274-4146-9549-230b400a999c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="f69d5a26-74db-4b55-82af-3c6ccef773d3"/>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="118" y="0" width="100" height="20" uuid="1d9fdf03-6ac6-4b65-9afe-483810c24ef2"/>
+				<text><![CDATA[DNI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="228" y="0" width="100" height="20" uuid="bc21ae72-b044-43f7-8de4-14b2eb6773bb"/>
+				<text><![CDATA[DEBE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="347" y="0" width="100" height="20" uuid="511170e4-c214-4bd0-981f-ef7d4aca210c"/>
+				<text><![CDATA[HABER]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="38" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="17" width="100" height="20" uuid="bebbf862-68df-4719-8992-13f746fe3ee5"/>
+				<textFieldExpression><![CDATA[$F{cuentacorriente_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="118" y="17" width="100" height="20" uuid="ed095ce8-0bca-487a-a6a8-2e4e7bd75b9c"/>
+				<textFieldExpression><![CDATA[$F{cuentacorriente_dniCliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="228" y="17" width="100" height="20" uuid="dedd8be0-c576-4da3-a024-115945e46dcd"/>
+				<textFieldExpression><![CDATA[$F{cuentacorriente_debe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="347" y="17" width="100" height="20" uuid="cb19404f-c2c8-43e4-ba3e-98b4ab62f136"/>
+				<textFieldExpression><![CDATA[$F{cuentacorriente_haber}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="1" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="29" splitType="Stretch">
+			<textField>
+				<reportElement x="208" y="9" width="80" height="20" uuid="10d8bcf2-f9a7-45c8-a195-b030baaa8160"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="288" y="9" width="40" height="20" uuid="6e8a781b-47fe-4989-a23f-ae5770712bd7"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="20" splitType="Stretch"/>
+	</summary>
+</jasperReport>
